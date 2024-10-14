@@ -3,7 +3,6 @@ import express from "express";
 import cors from "cors";
 import { returnError } from "./src/exception/errorHandler.js";
 import fs from "fs";
-import { config } from "./config/index.js";
 import connectDB from "./config/db.js";
 // Middleware Imports
 import { postTrimmer } from "./src/middleware/trimmer.js";
@@ -34,7 +33,7 @@ app.use((req, res, next) => {
 // Error Handler
 app.use(returnError);
 // Webserver Port
-const PORT = config.SERVER_PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Server Started on Port : ${PORT}`);
+const port = parseInt(process.env.SERVER_PORT || "5000", 10);
+app.listen(port, "0.0.0.0", () => {
+    console.log(`App is running on port ${port}`);
 });

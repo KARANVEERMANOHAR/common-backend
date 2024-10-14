@@ -48,8 +48,9 @@ app.use((req, res, next) => {
 app.use(returnError);
 
 // Webserver Port
-const PORT = config.SERVER_PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Server Started on Port : ${PORT}`);
+const port: number = parseInt(process.env.SERVER_PORT || "5000", 10);
+
+app.listen(port, "0.0.0.0", () => {
+  console.log(`App is running on port ${port}`);
 });
