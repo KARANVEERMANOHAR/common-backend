@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 // Error Handler
 app.use(returnError);
 // Webserver Port
-const port = parseInt(process.env.SERVER_PORT || "5000", 10);
+const port = parseInt(process.env.PORT || "5000", 10);
 app.listen(port, "0.0.0.0", () => {
     console.log(`App is running on port ${port}`);
 });
